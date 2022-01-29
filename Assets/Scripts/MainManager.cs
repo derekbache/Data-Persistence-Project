@@ -66,7 +66,7 @@ public class MainManager : MonoBehaviour
 
     void DisplayHighScore()
     {
-        BestScoreText.text = "Best Score : " + PlayerPrefs.Instance.highScorerName + " : " + PlayerPrefs.Instance.highScore;
+        BestScoreText.text = "Best Score : " + PlayerPrefs.Instance.highScoreName + " : " + PlayerPrefs.Instance.highScore;
     }
 
     void AddPoint(int point)
@@ -79,8 +79,9 @@ public class MainManager : MonoBehaviour
         if (m_Points > PlayerPrefs.Instance.highScore)
         {
             PlayerPrefs.Instance.highScore = m_Points;
-            PlayerPrefs.Instance.highScorerName = PlayerPrefs.Instance.playerName;
+            PlayerPrefs.Instance.highScoreName = PlayerPrefs.Instance.playerName;
             DisplayHighScore();
+            PlayerPrefs.Instance.Save();
         }
         m_GameOver = true;
         GameOverText.SetActive(true);
